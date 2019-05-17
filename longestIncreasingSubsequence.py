@@ -1,3 +1,4 @@
+# complexity: o(n^2)
 class LongestIncreasingSubsequence:
     def __init__(self,list):
         self._list = list
@@ -12,8 +13,21 @@ class LongestIncreasingSubsequence:
         return max(self._L)
 
 def main():
-    a = [1,2,3,4,3,10,6,7,11,13]
-    lis = LongestIncreasingSubsequence(a)
-    print(lis.get())
+    try:
+        list = [] #empty list
+        n = int(input("Enter n?\n"))
+        print("Enter {} numbers".format(n))
+        i = 0
+        while i < n:
+            list.append(int(input()))
+            i += 1
+        # a = [7,11,-5,-2,15,1,16,6,7,11,8,9,0]
+        lis = LongestIncreasingSubsequence(list)
+        print("\nLongest Increasing Subsequence: {}".format(lis.get()))
+    except ValueError as e:
+        print("\nValueError: Expecting Integers Only\n\nSystem Message :: {}".format(e))
+    except Exception as e:
+        print("Error: {}".format(e))
+
 
 if __name__ == "__main__": main()
