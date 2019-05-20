@@ -2,14 +2,19 @@
 
 def collatz(number):
     if(number % 2 == 0):
-        print(number // 2)
+        print(number // 2, end=" ")
         return number // 2
     else:
-        print(3 * number + 1)
+        print(3 * number + 1, end=" ")
         return 3 * number + 1
 def main():
-    n = int(input("Enter a number: "))
-    n = collatz(n)
-    while(n != 1):
+    try:
+        n = int(input("Enter a number: "))
         n = collatz(n)
-main()
+        while(n != 1):
+            n = collatz(n)
+        print("\nDone")
+    except Exception as e:
+        print("Error: You must enter a valid integer")
+
+if __name__ == "__main__": main()
