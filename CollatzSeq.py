@@ -10,11 +10,12 @@ def collatz(number):
 def main():
     try:
         n = int(input("Enter a number: "))
+        assert(n>1)
         n = collatz(n)
         while(n != 1):
             n = collatz(n)
         print("\nDone")
     except Exception as e:
-        print("Error: You must enter a valid integer")
+        print("Error: You must enter a valid integer and should be greater than 1")
 
 if __name__ == "__main__": main()
