@@ -5,6 +5,8 @@ import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 # disable secure socket layer certification error, if any
 import ssl
+import re
+import os #to delete the empty file, if no links found
 
 
 try:
@@ -13,17 +15,36 @@ try:
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
 
-    url = input("Enter url: ")
+
+    url = input("Enter full url(eg: http://mit.edu): ")
     if url == '':
         print("Invalid Url")
     else:
+
         html = urllib.request.urlopen(url, context=ctx).read()
         soup = BeautifulSoup(html, 'html.parser')
         #retrieve anchor tags
         tags = soup('a')
+        print("Connection established")
+        filename = input('Enter file name to store the links (eg: mylinks.txt): ')
+        fh = open(filename,'w')
+        link = 0 #to indicate if copied any links
         for tag in tags:
             line = tag.get('href', None)
+
             if(line != None and line.endswith('.pdf')):
-                print(line)
+                # print(line)
+                line = line + "\n"
+                fh.write(line)
+                link += 1
+
+    fh.close() # release resource
+    if link > 0:
+        print(link , " links copied!")
+        print("Check the file: ",filename)
+    else:
+        os.remove(filename)
+        print('No links copied, file removed')
+
 except Exception as e:
     print(e)
