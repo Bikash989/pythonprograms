@@ -4,7 +4,7 @@ try:
     count = 0
     fh = open(fname)
     for line in fh:
-        if not line.startswith('From:'): 
+        if not line.startswith('From:'):
             continue
         words = line.split()
         print(words[1])
