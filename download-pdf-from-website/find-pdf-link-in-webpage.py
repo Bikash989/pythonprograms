@@ -1,6 +1,7 @@
 # program that accepts a url address from the user and prints the links
 # import networking library to open connections to the webpage and load file
 import urllib.request, urllib.parse, urllib.error
+from urllib.parse import urljoin
 #before using BeautifulSoup library, install: pip3 install BeautifulSoup
 from bs4 import BeautifulSoup
 # disable secure socket layer certification error, if any
@@ -16,7 +17,7 @@ try:
     ctx.verify_mode = ssl.CERT_NONE
 
 
-    url = input("Enter full url(eg: http://mit.edu): ")
+    url = input("Enter full url(eg: http://www.jmlr.org/papers/v20/): ")
     if url == '':
         print("Invalid Url")
     else:
@@ -33,15 +34,16 @@ try:
             line = tag.get('href', None)
 
             if(line != None and line.endswith('.pdf')):
-                # print(line)
-                line = line + "\n"
+                #resolve relative path
+                line = urljoin(url,line)
+                line = line + "\n"  #add a new line
                 fh.write(line)
                 link += 1
 
     fh.close() # release resource
     if link > 0:
         print(link , " links copied!")
-        print("Check the file: ",filename)
+        print("Now run the program 'download_pdf.py' and give the filename as ", filename)
     else:
         os.remove(filename)
         print('No links copied, file removed')
