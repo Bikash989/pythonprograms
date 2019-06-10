@@ -1,9 +1,5 @@
 import requests
-#beware of relative path, the file contains relative path
-# i.e why throwing error
-# need to modify find-pdf-link-in-webpage.property
-#will do it later
-#for now assuming the file contains full path
+
 fname = input("Enter file name: ")
 try:
     fh = open(fname,'r')
