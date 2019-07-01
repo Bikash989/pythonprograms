@@ -6,7 +6,7 @@ win = tk.Tk()   #create windows instance
 win.title("Python GUI") #set title
 
 lbl = ttk.Label(win, text = "Enter a name ") #create a label
-lbl.grid(column = 0, row = 0)   # place it in the window frame
+lbl.grid(column = 0, row = 0, sticky = tk.W, padx = 2)   # place it in the window frame
 
 lbl2 = ttk.Label(win, text = " Choose a number: ") # create a 2nd label
 lbl2.grid(column = 1, row = 0)  # place it in the window frame, right next to the level above
@@ -41,9 +41,9 @@ chkbox3 = tk.Checkbutton(win, text = "Checked", variable = checkboxVal3)
 chkbox3.select() # make it checked, variable will be set to 1
 
 # placing all three checkbox in one row, and different columns
-chkbox1.grid(column = 0, row = 2)
-chkbox2.grid(column = 1, row = 2)
-chkbox3.grid(column = 2, row = 2)
+chkbox1.grid(column = 0, row = 2, sticky = tk.W)
+chkbox2.grid(column = 1, row = 2, sticky = tk.W)
+chkbox3.grid(column = 2, row = 2, sticky = tk.W)
 
 # 3 radio Button
 colors = ['Blue', 'Red', 'Green'] # declaring a list of colors
