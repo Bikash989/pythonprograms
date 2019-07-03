@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-
+from tkinter import Spinbox
+from tkinter import scrolledtext
 win = tk.Tk()
 win.title("Tabbed Widgets")
 
@@ -25,6 +26,19 @@ my_label = ttk.Label(mighty, text = "Enter a name:")
 my_label.grid(column = 0, row = 0, padx = 20, pady = 20, sticky = 'W')
 val = tk.StringVar()
 tk.Entry(mighty, textvariable = val).grid(column = 1, row = 0, padx = 10, pady = 10, sticky = 'W')
+
+# spinbox callback
+def _spin():
+    value = spin.get()
+    print(value)
+    scrol.insert(tk.INSERT, value + '\n')
+
+# adding a spinbox Widget
+spin = Spinbox(mighty, from_ = 0, to = 10, width = 5, bd = 8, command = _spin)
+spin.grid(column = 0, row = 2, padx = 10, pady = 10)  # bd-border width
+
+scrol = scrolledtext.ScrolledText(mighty, height = 10, width = 40, wrap = tk.WORD)
+scrol.grid(row = 3, columnspan = 4)
 
 my_label2 = ttk.Label(mighty, text = "Choose a number")
 my_label2.grid(column = 0, row = 1, padx = 20, pady = 20, sticky = 'W', )
