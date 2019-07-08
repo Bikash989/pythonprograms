@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import scrolledtext
 #================================================================
-class ToolTip(object):
+class ToolTip(object):  ''' you can omit object '''
     def __init__(self, widget):
         self.widget = widget
         self.tip_window = None
