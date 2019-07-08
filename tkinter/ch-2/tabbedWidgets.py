@@ -19,7 +19,7 @@ hierarchy, tab -> labelframe -> labelInside
 '''
 # make a label Frame
 mighty = ttk.LabelFrame(tab1, text = "Mighty Python")
-    mighty.grid(column = 0, row = 0, padx = 8, pady = 20)
+mighty.grid(column = 0, row = 0, padx = 8, pady = 20)
 
 # label using mighty as parent
 my_label = ttk.Label(mighty, text = "Enter a name:")
