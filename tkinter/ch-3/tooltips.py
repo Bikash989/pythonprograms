@@ -11,9 +11,9 @@ class ToolTip(object):  ''' you can omit object '''
         if self.tip_window or not tip_text:
             return
         x, y, _cx, cy = self.widget.bbox("insert")      # gets size of widget
+        self.tip_window = tw = tk.Toplevel(self.widget) # create new tooltip window
         x = x + self.widget.winfo_rootx() + 25         # calc to display tooltip
         y = y + cy + self.widget.winfo_rooty() + 25     # below and to the right
-        self.tip_window = tw = tk.Toplevel(self.widget) # create new tooltip window
         tw.wm_overrideredirect(True)                    # remove all Window Manager (wm) decorations
         tw.wm_geometry("+%d+%d" % (x, y))                # create window size
 
@@ -38,17 +38,17 @@ def create_ToolTip(widget, text):
     widget.bind('<Leave>', leave)
 
 #====================================================================
-win = tk.Tk()
-win.title("ToolTip")
-spin = tk.Spinbox(win, values=(1,2,3,4,5))
-spin.grid(column = 0, row = 0)
-# Add a toolTip
-create_ToolTip(spin, "This is a Spin Control")
-
-# using a scrolled text control
-scrol_w = 30
-scrol_h = 3
-scrol = scrolledtext.ScrolledText(win, width = scrol_w, height = scrol_h, wrap = tk.WORD)
-scrol.grid(column = 0, row = 1, sticky='WE', columnspan = 3)
-create_ToolTip(scrol, 'Enter your complain here')
-win.mainloop()
+# win = tk.Tk()
+# win.title("ToolTip")
+# spin = tk.Spinbox(win, values=(1,2,3,4,5))
+# spin.grid(column = 0, row = 0)
+# # Add a toolTip
+# create_ToolTip(spin, "This is a Spin Control")
+#
+# # using a scrolled text control
+# scrol_w = 30
+# scrol_h = 3
+# scrol = scrolledtext.ScrolledText(win, width = scrol_w, height = scrol_h, wrap = tk.WORD)
+# scrol.grid(column = 0, row = 1, sticky='WE', columnspan = 3)
+# create_ToolTip(scrol, 'Enter your complain here')
+# win.mainloop()
