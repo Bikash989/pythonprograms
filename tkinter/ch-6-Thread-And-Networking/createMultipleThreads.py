@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
 from threading import Thread
+from time import sleep
 
 class OOP():
     def __init__(self):
@@ -13,13 +14,28 @@ class OOP():
         self.create_widgets()
 
     ''' method '''
-    def method_in_a_thread(self):
-        print('Hi, how are you!')
+    def create_thread(self):
+        self.run_thread = Thread(target = self.method_in_a_thread, args=[8])
+        self.run_thread.start()     # start the thread
+        self.run_thread.setDaemon(True)
+        print(self.run_thread)      # printint out the instance of the thread
+
+
+    def method_in_a_thread(self, val):
+        print('Hi,' + self.name.get() + ' how are you!')
+        print('createThread():', self.run_thread.isAlive())
+        for idx in range(val):
+            val = "printing " + str(idx)
+            self.action.configure(text= val)
+            sleep(2)
+            self.scrol.insert(tk.INSERT, str(idx) + '\n')
+        print('createThread():', self.run_thread.isAlive())
 
     ''' button callback '''
     def click_me(self):
-        self.action.configure(text = 'Hello' + self.name.get() + ' '
-                            +self.number_chosen.get())
+        # self.action.configure(text = 'Hello' + self.name.get())
+        self.create_thread()
+
     def _spin(self):
         value = self.spin.get() #get the value
         print(value)            #print the value
@@ -72,8 +88,8 @@ class OOP():
         self.scrol.grid(column = 0, row =3, sticky = 'WE',columnspan = 3)
 
 
+
 oop = OOP()
 
-#run threads
-run_thread = Thread(target=oop.method_in_a_thread)
+
 oop.win.mainloop()
