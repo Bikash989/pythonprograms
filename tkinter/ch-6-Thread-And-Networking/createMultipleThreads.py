@@ -16,8 +16,9 @@ class OOP():
     ''' method '''
     def create_thread(self):
         self.run_thread = Thread(target = self.method_in_a_thread, args=[8])
-        self.run_thread.start()     # start the thread
         self.run_thread.setDaemon(True)
+        self.run_thread.start()     # start the thread
+
         print(self.run_thread)      # printint out the instance of the thread
 
 
