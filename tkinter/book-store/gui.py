@@ -18,32 +18,26 @@ class myGui(object):
 
     def create_widgets(self):
         l1 = Label(self.win, text = "Title")
-        l1. grid(row = 0, column = 0)
-
         l2 = Label(self.win, text = "Author")
-        l2.grid(row = 0, column = 2)
-
         l3 = Label(self.win, text = "Year")
-        l3.grid(row = 1, column = 0)
-
         l4 = Label(self.win, text = "ISBN")
+        l1.grid(row = 0, column = 0)
+        l2.grid(row = 0, column = 2)
+        l3.grid(row = 1, column = 0)
         l4.grid(row = 1, column = 2)
 
         title = StringVar()
-        e1 = Entry(self.win, textvariable = title)
-        e1.grid(row = 0, column = 1)
-
         author = StringVar()
-        e1 = Entry(self.win, textvariable = author)
-        e1.grid(row = 0, column = 3)
-
         year = StringVar()
-        e1 = Entry(self.win, textvariable = year)
-        e1.grid(row = 1, column = 1)
-
         isbn = StringVar()
-        e1 = Entry(self.win, textvariable = isbn)
-        e1.grid(row = 1, column = 3)
+        e1 = Entry(self.win, textvariable = title)
+        e2 = Entry(self.win, textvariable = author)
+        e3 = Entry(self.win, textvariable = year)
+        e4 = Entry(self.win, textvariable = isbn)
+        e1.grid(row = 0, column = 1)
+        e2.grid(row = 0, column = 3)
+        e3.grid(row = 1, column = 1)
+        e4.grid(row = 1, column = 3)
 
         listbox1 = Listbox(self.win, height = 10, width = 35)
         listbox1.grid(row = 2, column = 0, rowspan = 6,columnspan = 2)
