@@ -3,24 +3,13 @@ def FindSubString (s, x):
     l=[]
     flag = 0
     if(len(x) < len(s)):
-        find_first = s.find(x[0], 0) # for 1st char
-        if(find_first != -1):
-            l.append(find_first)
-            idx = 0
-            x = x[1:]
-            for c in x:
-                val = s.find(c,l[idx])
-                if(val != -1):   # check for c and start from idx
-                    l.append(val)
-                    if(l != sorted(l)):
-                        flag = 1
-                        break
-                    idx += 1
-                else:
-                    flag = 1
-                    break
-        else:
-            flag = 1
+        for c in x:
+            val = s.find(c)
+            if(val!=-1 and val not in l):
+                l.append(val)
+            else:
+                flag = 1
+                break
     elif(len(x) == len(s) and x == s):
         return s
     else:
@@ -29,7 +18,7 @@ def FindSubString (s, x):
     if(flag == 1):
         return -1
     else:
-        return s[l[0]:l[-1]+1]
+        return s[min(l):max(l)+1]
 
 
 T = int(input())
