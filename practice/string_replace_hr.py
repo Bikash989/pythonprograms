@@ -1,3 +1,4 @@
+#string replace, hacker rank, online test
 def getdna(s):
     rev = s[::-1]
     res = ""
