@@ -1,32 +1,8 @@
 class triangle:
-    def __init__(self,base=0,height=0,left_side=0,right_side=0):  #default value = 1, coz i don't want to check for every number in /
+    def __init__(self,base=0,height=0,left_side=0,right_side=0):  
         self.base = base
         self.height = height
         self.left_side = left_side
-        self.right_side = right_side  
-
-    def perimeter(self):
-        return self.base+self.left_side+self.right_side
-
-    def area(self):
-        return 0.5*self.base*self.height
-    
-    def __str__(self):
-        if(self.height > 0):
-            # base and height are set
-            return "base = {} and height = {}".format(self.base,self.height)
-        else:
-            return "base = {} , left_side = {} and right_side = {}".format(self.base,self.left_side,self.right_side)
-
-    def __add__(self,other_triangle):        
-        base_ = self.base + other_triangle.base
-        left_ = self.left_side + other_triangle.left_side
-        right_ = self.right_side + other_triangle.right_side
-        height_ = self.height + other_triangle.height
-        return triangle(base=base_,height=height_,left_side=left_,right_side=right_)
-
-    def __truediv__(self,other_triangle):
-        base_ = self.base / other_triangle.base
         left_ = 0
         height_ = 0
         right_=0
